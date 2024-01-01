@@ -3,63 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Квест для котика</title>
   <link rel="stylesheet" href="style.css">
-  <title>Ваше Имя - Программист</title>
 </head>
 <body>
-  
-  
-  <header>
-    <div class="logo">neqqowo</div>
-    <nav>
-      <ul>
-        <li><a href="#">контакты</a></li>
-        <li><a href="#">github</a></li>
-        <li><a href="#">соц-сети</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header>квест для котика</header>
+  <div class="rules">привет, котик. правила просты <br>пишешь сюда найденные коды и получаешь<br>следующие подсказки. люблю</div>
+  <form>
+    <!-- Первое поле для ввода -->
+    <input type="text" id="input1" placeholder="впиши код" class="forma">
+    <!-- Кнопка для проверки первого текста и открытия следующего поля -->
+    <button type="button" onclick="checkTextAndOpenNext(1, 'zxc')">тык!</button>
 
-  <section class="yo">
-    <h2>О себе</h2>
-    <p>Привет, я программист с опытом работы в разработке веб-приложений. Мои навыки включают HTML, CSS, JavaScript, и многие другие технологии.</p>
     
-    <div class="skills">
-      <h2>Навыки</h2>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Python</li>
-        <li>C#</li>
-        
-      </ul>
-    </div>
-  </section>
-  <section class="yp2">
-    <div class="dropdown">
-      <h2>мои проекты</h2>
-    <div class="skills2">
-      <ul>
-        <li><div class="content">
-          <div>проект 1</div>
-          <div>картинка</div>
-        </div></li>
-        <li><div class="content">
-          <div>проект 2</div>
-          <div>картинка</div>
-        </div></li>
-        
-        
-      </ul>
+    <div id="additionalContent1" class="hidden">
+      <input type="text" id="input1" rows='2' placeholder="подсказочка 1" class="forma2">
     </div>
 
-  </section>
+   
+    <div id="inputContainer2" class="hidden">
+      <input type="text" id="input2" placeholder="впиши вторую подсказочку" class="forma">
+      <button type="button" onclick="checkTextAndOpenNext(2, 'zxcwr')">Проверить 2</button>
+    </div>
 
-  <footer>
-    <p>&copy; 2023 neqqowo. Все права защищены.</p>
-  </footer>
   
+    <div id="additionalContent2" class="hidden">
+      <div class="answer">это подсказочка номер 2.</div>
+    </div>
 
+    <div id="inputContainer3" class="hidden">
+      <input type="text" id="input3" placeholder="впиши последнюю подсказочку" class="forma">
+      <button type="button" onclick="checkTextAndOpenNext(3, 'zxckit')">Проверить 2</button>
+    </div>
+
+  
+    <div id="additionalContent3" class="hidden">
+      <div class="answer">это подсказочка номер 3.</div>
+    </div>
+
+    
+
+  </form>
+
+  <script>
+    function checkTextAndOpenNext(index, controlWord) {
+      var inputId = "input" + index;
+      var inputValue = document.getElementById(inputId).value;
+
+      if (inputValue === controlWord) {
+        // Отображение дополнительного контента
+        var contentId = "additionalContent" + index;
+        var contentElement = document.getElementById(contentId);
+        contentElement.classList.remove("hidden");
+
+        // Открытие следующего поля для ввода и соответствующей кнопки
+        var nextIndex = index + 1;
+        var nextInputContainerId = "inputContainer" + nextIndex;
+        var nextInputContainer = document.getElementById(nextInputContainerId);
+        if (nextInputContainer) {
+          nextInputContainer.classList.remove("hidden");
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hidden {
+      display: none;
+      text-align: center;
+    }
+  </style>
 </body>
 </html>
