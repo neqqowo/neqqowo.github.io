@@ -5,7 +5,7 @@ body{
 }
 
 .forma{
-  width:20%;
+  width:55%;
   resize: vertical;
   padding:15px;
   border-radius:15px;
@@ -21,7 +21,7 @@ body{
   
 }
 button{
-  width:10%;
+  width:25%;
   resize: vertical;
   padding:15px;
   border-radius:15px;
@@ -49,7 +49,7 @@ button:hover{
 }
 
 .forma2{
-  width:30%;
+  width:70%;
   resize: vertical;
   padding:15px;
   border-radius:15px;
@@ -65,7 +65,7 @@ button:hover{
 .rules{
   margin: auto;
   margin-top: 20px;
-  width: 30%;
+  width: 70%;
   border-radius: 15px;
   border:0;
   box-shadow:4px 4px 10px rgba(0, 0, 0, 0.274);
