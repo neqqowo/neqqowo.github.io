@@ -1,77 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Квест для котика</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>квест для котика</header>
-  <div class="rules">привет, котик. правила просты <br>пишешь сюда найденные коды и получаешь<br>следующие подсказки. люблю</div>
-  <form>
-    <!-- Первое поле для ввода -->
-    <input type="text" id="input1" placeholder="впиши код" class="forma">
-    <!-- Кнопка для проверки первого текста и открытия следующего поля -->
-    <button type="button" onclick="checkTextAndOpenNext(1, 'zxc')">тык!</button>
-
+    <main>
+        <div class="content">
+            <div class="rules">
+                <h1>Привет, котик!</h1>
+                <h2>этот мини квест сделан специально для<br> тебя
+                правила просты - находишь коды, получаешь подсказки<br>
+                первый код - zxc</h2>
+                
+            </div>
+            <div class="startgame">
+                <button class="huy"></button>
+            </div>
+            
+            
+            <div class="quest">
+                <form>
+                    
+                    <div id="inputContainer">
+                        <input type="text" id="input1" placeholder="впиши код" class="forma">
+                        <button type="button" onclick="checkTextAndOpenNext(1, 'zxc')" class="btn">тык!</button>
+                                 
+                    </div>
+                    <div id="additionalContent1" class="hidden">
+                      <p class="forma2">это подсказочка 1!</p>
+                    </div>
+                        
+                    <div id="inputContainer2" class="hidden">
+                      <input type="text" id="input2" placeholder="впиши вторую подсказочку" class="forma">
+                      <button type="button" onclick="checkTextAndOpenNext(2, 'zxcwr')" class="btn">тык!</button>
+                    </div>
+                               
+                    <div id="additionalContent2" class="hidden">
+                      <div class="forma2">это подсказочка номер 2.</div>
+                    </div>
+                
+                    <div id="inputContainer3" class="hidden">
+                      <input type="text" id="input3" placeholder="впиши последнюю подсказочку" class="forma">
+                      <button type="button" onclick="checkTextAndOpenNext(3, 'zxckit')" class="btn">тык!</button>
+                    </div>
+                          
+                    <div id="additionalContent3" class="hidden">
+                      <div class="forma2">это подсказочка номер 3.</div>
+                    </div>               
+                  </form>
+            </div>
+        </div>
+        <div class="startgame">
+            <button id="scrollButton" class="start">Начать игру</button>
+        </div>
+    </main>
+    <script>
+        function checkTextAndOpenNext(index, controlWord) {
+          var inputId = "input" + index;
+          var inputValue = document.getElementById(inputId).value;
     
-    <div id="additionalContent1" class="hidden">
-      <p class="forma2">это подсказочка 1!</p>
-    </div>
-
-   
-    <div id="inputContainer2" class="hidden">
-      <input type="text" id="input2" placeholder="впиши вторую подсказочку" class="forma">
-      <button type="button" onclick="checkTextAndOpenNext(2, 'zxcwr')">тык!</button>
-    </div>
-
-  
-    <div id="additionalContent2" class="hidden">
-      <div class="forma2">это подсказочка номер 2.</div>
-    </div>
-
-    <div id="inputContainer3" class="hidden">
-      <input type="text" id="input3" placeholder="впиши последнюю подсказочку" class="forma">
-      <button type="button" onclick="checkTextAndOpenNext(3, 'zxckit')">тык!</button>
-    </div>
-
-  
-    <div id="additionalContent3" class="hidden">
-      <div class="forma2">это подсказочка номер 3.</div>
-    </div>
-
+          if (inputValue === controlWord) {
+            // Отображение дополнительного контента
+            var contentId = "additionalContent" + index;
+            var contentElement = document.getElementById(contentId);
+            contentElement.classList.remove("hidden");
     
-
-  </form>
-
-  <script>
-    function checkTextAndOpenNext(index, controlWord) {
-      var inputId = "input" + index;
-      var inputValue = document.getElementById(inputId).value;
-
-      if (inputValue === controlWord) {
-        // Отображение дополнительного контента
-        var contentId = "additionalContent" + index;
-        var contentElement = document.getElementById(contentId);
-        contentElement.classList.remove("hidden");
-
-        // Открытие следующего поля для ввода и соответствующей кнопки
-        var nextIndex = index + 1;
-        var nextInputContainerId = "inputContainer" + nextIndex;
-        var nextInputContainer = document.getElementById(nextInputContainerId);
-        if (nextInputContainer) {
-          nextInputContainer.classList.remove("hidden");
+            // Открытие следующего поля для ввода и соответствующей кнопки
+            var nextIndex = index + 1;
+            var nextInputContainerId = "inputContainer" + nextIndex;
+            var nextInputContainer = document.getElementById(nextInputContainerId);
+            if (nextInputContainer) {
+              nextInputContainer.classList.remove("hidden");
+            }
+          }
         }
-      }
-    }
-  </script>
-
-  <style>
-    .hidden {
-      display: none;
-      text-align: center;
-    }
-  </style>
+      </script>
+      <script src="scrollButton.js"></script>
+      <script src="script.js"></script>
+      <style>
+        .hidden {
+          display: none;
+          text-align: center;
+        }
+      </style>
+    
 </body>
 </html>
