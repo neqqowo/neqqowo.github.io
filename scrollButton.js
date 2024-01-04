@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var scrollButton = document.getElementById("scrollButton");
 
     // Расстояние, на которое будет прокручиваться страница
-    var scrollDistance = 800;
+    var scrollDistance = 750;
 
     scrollButton.addEventListener("click", function() {
         var start = window.scrollY;
