@@ -1,91 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Валентинка</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <div class="content">
-            <div class="rules">
-                <h1>Привет, котик!</h1>
-                <h2>этот мини квест сделан специально для<br> тебя
-                правила просты - находишь коды, получаешь подсказки<br>
-                первый код - zxc</h2>
-                
-            </div>
-            <div class="startgame">
-                <button class="huy"></button>
-            </div>
-            
-            
-            <div class="quest">
-                <form>
-                    
-                    <div id="inputContainer">
-                        <input type="text" id="input1" placeholder="впиши код" class="forma">
-                        <button type="button" onclick="checkTextAndOpenNext(1, 'zxc')" class="btn">тык!</button>
-                                 
-                    </div>
-                    <div id="additionalContent1" class="hidden">
-                      <p class="forma2">это подсказочка 1!</p>
-                    </div>
-                        
-                    <div id="inputContainer2" class="hidden">
-                      <input type="text" id="input2" placeholder="впиши вторую подсказочку" class="forma">
-                      <button type="button" onclick="checkTextAndOpenNext(2, 'zxcwr')" class="btn">тык!</button>
-                    </div>
-                               
-                    <div id="additionalContent2" class="hidden">
-                      <div class="forma2">это подсказочка номер 2.</div>
-                    </div>
-                
-                    <div id="inputContainer3" class="hidden">
-                      <input type="text" id="input3" placeholder="впиши последнюю подсказочку" class="forma">
-                      <button type="button" onclick="checkTextAndOpenNext(3, 'zxckit')" class="btn">тык!</button>
-                    </div>
-                          
-                    <div id="additionalContent3" class="hidden">
-                      <div class="forma2">это подсказочка номер 3.</div>
-                    </div>               
-                  </form>
-            </div>
-        </div>
-        <div class="startgame">
-            <button id="scrollButton" class="start">Начать игру</button>
-        </div>
-    </main>
-    <script>
-        function checkTextAndOpenNext(index, controlWord) {
-          var inputId = "input" + index;
-          var inputValue = document.getElementById(inputId).value;
-    
-          if (inputValue === controlWord) {
-            // Отображение дополнительного контента
-            var contentId = "additionalContent" + index;
-            var contentElement = document.getElementById(contentId);
-            contentElement.classList.remove("hidden");
-    
-            // Открытие следующего поля для ввода и соответствующей кнопки
-            var nextIndex = index + 1;
-            var nextInputContainerId = "inputContainer" + nextIndex;
-            var nextInputContainer = document.getElementById(nextInputContainerId);
-            if (nextInputContainer) {
-              nextInputContainer.classList.remove("hidden");
-            }
-          }
-        }
-      </script>
-      <script src="scrollButton.js"></script>
-      <script src="script.js"></script>
-      <style>
-        .hidden {
-          display: none;
-          text-align: center;
-        }
-      </style>
-    
+  <div class="container">
+    <h1>Ты будешь моей валентинкой?</h1>
+    <img id="kittyImg" src="https://media.tenor.com/s5FIe_do3HIAAAAM/%D0%BA%D0%BE%D1%82-%D1%87%D0%B0%D0%B2%D0%BA%D0%B0%D0%B5%D1%82.gif" alt="Котик">
+    <div class="buttons">
+      <button class="da" onclick="changeKitty('happy')">Да</button>
+      <button id="moving" onclick="changeKitty('sad')">Нет</button>
+    </div>
+  </div>
+  <script src="scrollButton.js"></script>
+
+  <script>
+    // Функция для генерации случайного числа в заданном диапазоне
+    function getRandomPosition(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Функция для перемещения кнопки в случайное место на странице
+    function moveButton() {
+        var button = document.getElementById("moving");
+        var buttonWidth = button.offsetWidth;
+        var buttonHeight = button.offsetHeight;
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+
+        var newX = getRandomPosition(0, screenWidth - buttonWidth);
+        var newY = getRandomPosition(0, screenHeight - buttonHeight);
+
+        button.style.left = newX + "px";
+        button.style.top = newY + "px";
+    }
+
+    // Перемещаем кнопку при загрузке страницы
+    moveButton();
+
+    // Перемещаем кнопку при наведении
+    document.getElementById("moving").addEventListener("mouseover", moveButton);
+
+    // Обработчик события для нажатия на кнопку
+    document.getElementById("moving").addEventListener("click", function() {
+        alert("Кнопка была нажата!");
+    });
+</script>
 </body>
 </html>
